@@ -1,14 +1,15 @@
 package jp.gr.java_conf.sake_beer.bttest
 
-import android.R
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.Spinner
+import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import jp.gr.java_conf.sake_beer.bttest.databinding.FragmentProfileBinding
+import jp.gr.java_conf.sake_beer.bttest.viewmodel.ViewModel
 
 
 // TODO: Rename parameter arguments, choose names that match
@@ -26,14 +27,15 @@ class ProfileFragment : Fragment() {
     private var param1: String? = null
     private var param2: String? = null
 
-    private lateinit var binding: FragmentProfileBinding
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
             param1 = it.getString(ARG_PARAM1)
             param2 = it.getString(ARG_PARAM2)
         }
+//        val binding: FragmentProfileBinding =
+//            DataBindingUtil.setContentView(this, R.layout.fragment_profile)
+//        binding.viewModel = ViewModel()
 
     }
 
@@ -42,14 +44,9 @@ class ProfileFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        binding = FragmentProfileBinding.inflate(inflater, container, false)
-        binding.infoBTText="Not connected"
-        binding.ageText="45"
-        binding.heightText="160"
-        binding.weightText="80"
-        binding.commentText="comment..."
-        binding.infoText="info..."
-
+        val binding = DataBindingUtil.inflate<FragmentProfileBinding>(
+            inflater, R.layout.fragment_profile, container, false)
+        binding.viewModel = ViewModel()
         return binding.root
     }
 

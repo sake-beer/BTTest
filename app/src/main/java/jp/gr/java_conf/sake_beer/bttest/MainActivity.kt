@@ -2,6 +2,7 @@ package jp.gr.java_conf.sake_beer.bttest
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import jp.gr.java_conf.sake_beer.bttest.ProfileFragment
 
 
 class MainActivity : AppCompatActivity() {
