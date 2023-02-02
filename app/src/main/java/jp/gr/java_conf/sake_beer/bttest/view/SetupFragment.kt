@@ -1,15 +1,14 @@
-package jp.gr.java_conf.sake_beer.bttest
+package jp.gr.java_conf.sake_beer.bttest.view
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ArrayAdapter
-import android.widget.Spinner
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
-import jp.gr.java_conf.sake_beer.bttest.databinding.FragmentProfileBinding
-import jp.gr.java_conf.sake_beer.bttest.viewmodel.ViewModel
+import jp.gr.java_conf.sake_beer.bttest.databinding.FragmentSetupBinding
+import jp.gr.java_conf.sake_beer.bttest.viewmodel.ViewModelSetup
+import jp.gr.java_conf.sake_beer.bttest.R
 
 
 // TODO: Rename parameter arguments, choose names that match
@@ -19,10 +18,12 @@ private const val ARG_PARAM2 = "param2"
 
 /**
  * A simple [Fragment] subclass.
- * Use the [ProfileFragment.newInstance] factory method to
+ * Use the [SetupFragment.newInstance] factory method to
  * create an instance of this fragment.
  */
-class ProfileFragment : Fragment() {
+class SetupFragment(viewModel: ViewModelSetup) : Fragment() {
+    private val viewModel: ViewModelSetup = viewModel
+
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
@@ -33,9 +34,6 @@ class ProfileFragment : Fragment() {
             param1 = it.getString(ARG_PARAM1)
             param2 = it.getString(ARG_PARAM2)
         }
-//        val binding: FragmentProfileBinding =
-//            DataBindingUtil.setContentView(this, R.layout.fragment_profile)
-//        binding.viewModel = ViewModel()
 
     }
 
@@ -44,9 +42,9 @@ class ProfileFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        val binding = DataBindingUtil.inflate<FragmentProfileBinding>(
-            inflater, R.layout.fragment_profile, container, false)
-        binding.viewModel = ViewModel()
+        val binding = DataBindingUtil.inflate<FragmentSetupBinding>(
+            inflater, R.layout.fragment_setup, container, false)
+        binding.viewModel = viewModel
         return binding.root
     }
 
@@ -61,8 +59,8 @@ class ProfileFragment : Fragment() {
          */
         // TODO: Rename and change types and number of parameters
         @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            ProfileFragment().apply {
+        fun newInstance(viewModel: ViewModelSetup, param1: String, param2: String) =
+            SetupFragment(viewModel).apply {
                 arguments = Bundle().apply {
                     putString(ARG_PARAM1, param1)
                     putString(ARG_PARAM2, param2)

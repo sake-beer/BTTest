@@ -3,9 +3,12 @@ package jp.gr.java_conf.sake_beer.bttest.viewmodel
 import jp.gr.java_conf.sake_beer.bttest.BR
 import androidx.databinding.BaseObservable
 import androidx.databinding.Bindable
+import jp.gr.java_conf.sake_beer.bttest.Repository
 
 
-class ViewModel : BaseObservable() {
+class ViewModelProfile(repository: Repository) : BaseObservable() {
+
+    val repository: Repository = repository
 
     @get:Bindable
     var infoBTText: String = "(device)"
@@ -15,25 +18,37 @@ class ViewModel : BaseObservable() {
         }
 
     @get:Bindable
-    var ageText: String = "40"
+    var spinnerPos: Int
+        get() = repository.sexSelect
         set(value){
-            field=value
+            repository.sexSelect = value
+            this.updateInfo()
+            notifyPropertyChanged(BR.spinnerPos)
+        }
+
+    @get:Bindable
+    var ageText: String
+        get() = repository.ageString
+        set(value){
+            repository.ageString = value
             this.updateInfo()
             notifyPropertyChanged(BR.ageText)
         }
 
     @get:Bindable
-    var heightText: String = "160"
+    var heightText: String
+        get() = repository.heightString
         set(value){
-            field=value
+            repository.heightString = value
             this.updateInfo()
             notifyPropertyChanged(BR.heightText)
         }
 
     @get:Bindable
-    var weightText: String = "60"
+    var weightText: String
+        get() = repository.weightString
         set(value){
-            field=value
+            repository.weightString = value
             this.updateInfo()
             notifyPropertyChanged(BR.weightText)
         }
@@ -47,7 +62,7 @@ class ViewModel : BaseObservable() {
         }
 
     @get:Bindable
-    var infoText: String = "(info)"
+    var infoText: String = ""
         set(value){
             field=value
             notifyPropertyChanged(BR.infoText)
@@ -55,10 +70,10 @@ class ViewModel : BaseObservable() {
 
     private fun updateInfo()
     {
-        infoText = "[AGE]" + ageText +
-                ";[HEIGHT]" + heightText +
-                ";[WEIGHT]" + weightText +
-                ";[HEIGHT]" + heightText
+        infoText = repository.sexSelect.toString() +
+                ";" + repository.ageString +
+                ";" + repository.heightString +
+                ";" + repository.weightString
     }
 
 

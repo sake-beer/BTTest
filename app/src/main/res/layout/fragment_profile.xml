@@ -5,7 +5,10 @@
     >
 
     <data>
-        <variable name="viewModel" type="jp.gr.java_conf.sake_beer.bttest.viewmodel.ViewModel" />
+        <variable
+            name="viewModel"
+            type="jp.gr.java_conf.sake_beer.bttest.viewmodel.ViewModelProfile"
+            />
     </data>
 
 
@@ -17,11 +20,17 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:gravity="center"
+            android:layout_height="wrap_content"
+            android:gravity="top"
             android:orientation="vertical"
             android:padding="32dp"
             >
+
+            <Button
+                android:id="@+id/buttonSend"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/send_button_text" />
 
             <TextView
                 android:id="@+id/caution"
@@ -53,6 +62,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="2"
                     android:entries="@array/sex_array"
+                    android:selectedItemPosition="@={viewModel.spinnerPos}"
                     />
 
             </LinearLayout>
@@ -74,7 +84,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="2"
-                    android:text="@{viewModel.ageText}"
+                    android:text="@={viewModel.ageText}"
                     android:inputType="number"
                     android:digits="0123456789"
                     />
@@ -98,7 +108,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="2"
-                    android:text="@{viewModel.heightText}"
+                    android:text="@={viewModel.heightText}"
                     android:inputType="number"
                     android:digits="0123456789"
                     />
@@ -122,7 +132,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="2"
-                    android:text="@{viewModel.weightText}"
+                    android:text="@={viewModel.weightText}"
                     android:inputType="number"
                     android:digits="0123456789"
                     />
@@ -158,14 +168,25 @@
                 android:text="@{viewModel.infoText}" />
 
 
-            <Button
-                android:id="@+id/buttonSend"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/send_button_text" />
 
         </LinearLayout>
 
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="bottom"
+            android:orientation="vertical"
+            android:padding="32dp"
+            >
+
+            <Button
+                android:id="@+id/buttonBT"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/bt_setup_text" />
+
+        </LinearLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </layout>
