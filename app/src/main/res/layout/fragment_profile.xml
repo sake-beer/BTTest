@@ -168,25 +168,17 @@
                 android:text="@{viewModel.infoText}" />
 
 
-
-        </LinearLayout>
-
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="bottom"
-            android:orientation="vertical"
-            android:padding="32dp"
-            >
-
             <Button
-                android:id="@+id/buttonBT"
+                android:id="@+id/buttonDevice"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/bt_setup_text" />
+                android:text="@string/bt_setup_text"
+                android:onClick="@{() -> viewModel.buttonDeviceClicked()}" />
 
         </LinearLayout>
+
+
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </layout>

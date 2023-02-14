@@ -30,46 +30,33 @@
                 android:id="@+id/buttonSend"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/search_device_text" />
+                android:text="@string/search_device_text"
+                />
 
-            <LinearLayout
-                android:layout_width="match_parent"
+            <TextView
+                android:id="@+id/titleDevice"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:layout_weight="1"
+                android:text="@string/device_title"
+                />
 
-                <TextView
-                    android:id="@+id/titleDevice"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="@string/device_title" />
+            <TextView
+                android:id="@+id/textDevice"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:text="@={viewModel.deviceName}"
+                />
 
-                <TextView
-                    android:id="@+id/textDevice"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="2"
-                    android:text="@={viewModel.deviceName}"
-                    />
-
-            </LinearLayout>
-
-        </LinearLayout>
-
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="bottom"
-            android:orientation="vertical"
-            android:padding="32dp"
-            >
 
             <Button
                 android:id="@+id/buttonBT"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/setup_return_text" />
+                android:text="@string/setup_return_text"
+                android:onClick="@{() -> viewModel.buttonBackClicked()}" />
+                />
 
         </LinearLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>

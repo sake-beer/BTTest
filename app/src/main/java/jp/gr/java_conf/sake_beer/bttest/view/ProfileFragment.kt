@@ -1,5 +1,6 @@
 package jp.gr.java_conf.sake_beer.bttest.view
 
+import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
